@@ -49,6 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = '192.168.115';
+$db['default']['hostname'] = '192.168.16.115';
 $db['default']['username'] = 'username';
 $db['default']['password'] = 'password';
 $db['default']['database'] = 'ucontrolv2';
