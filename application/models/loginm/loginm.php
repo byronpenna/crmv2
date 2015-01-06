@@ -6,7 +6,6 @@
 			parent::__construct();
 			$this->load->database();
 		}
-	
 
 		function consultar_usuario($user, $pass){
 			$pass= md5($pass);
@@ -34,7 +33,7 @@
 
 				//$_SESSION['usu_pass_email']=$datosusuario['usu_pass_email'];
 				//$_SESSION['usu_pass_email']='bisa2013';
-				//$_SESSION['usu_nombres']=$datosusuario->usu_nombres;
+				$_SESSION['usu_nombres']=$datosusuario->usu_nombres;
 				$_SESSION['cus_rol_id_fk']=$datosusuario->cus_rol_id_fk;
 				$idrol = $_SESSION['cus_rol_id_fk'];		
 				//Verificamos y agregamos el rol
@@ -63,10 +62,9 @@
 					$_SESSION['active']=true;	
 				}
 			}
-			}
-			return $datos->validacion;
 		}
-	
+		return $datos->validacion;	
+		}
 	}
  ?>
 

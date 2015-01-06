@@ -9,9 +9,10 @@
 		//Redirecciona al form para hacer el login
 		function index(){
 			$this->load->helper('url');
-
+			$this->load->view("loginv/loginv");
 			$idioma = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 			$idioma = substr($idioma, 0, 2);
+			//$this->load->view("loginv/loginv");
 			if ($idioma == 'es'){
 				$this->load->view("loginv/loginv");
 				//$this->load->view("general/login/login_es");
@@ -25,7 +26,7 @@
 		//la redirecion es por si el user o pass 
 		//estan incorrectas
 		function logear(){
-			$this->load->model("loginm/Loginm");
+			$this->load->model("loginm/loginm");
 			$loginm = new Loginm();
 		    if($_SERVER["REQUEST_METHOD"]=="POST"){
 				$user= addslashes($_POST["username"]);
