@@ -1,6 +1,6 @@
 <?php 
 
-	class Login extends CI_Controller{		
+	class LoginC extends CI_Controller{		
 		function __construct(){
 			parent::__construct();
 			session_start();
@@ -13,26 +13,27 @@
 			$idioma = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 			$idioma = substr($idioma, 0, 2);
 			if ($idioma == 'es'){
-				$this->load->view("general/login/login_es");
+				$this->load->view("loginv/loginv");
+				//$this->load->view("general/login/login_es");
 			}
 			else{
-				$this->load->view("general/login/login_en");
+				$this->load->view("loginv/loginv");
+				//$this->load->view("general/login/login_en");
 			}
 		}
 		//Valida credenciales y redirecciona
 		//la redirecion es por si el user o pass 
 		//estan incorrectas
 		function logear(){
-			$this->load->model("general/loginm");
-
+			$this->load->model("loginm/Loginm");
 			$loginm = new Loginm();
 		    if($_SERVER["REQUEST_METHOD"]=="POST"){
 				$user= addslashes($_POST["username"]);
 				$pass= addslashes($_POST["password"]);
 				if($loginm->consultar_usuario($user, $pass)=== true){
-					header("location:".site_url('general/principal'));
+					header("location:".site_url('loginc/principal'));
 				}else{
-					header("location:".site_url('general/login'));
+					header("location:".site_url('loginv/loginv'));
 				} 
 			}		
 		}
@@ -40,7 +41,7 @@
 		//cierra sesión del usuario
 		function logout(){
 			session_destroy();
-			header("location:".site_url('general/login'));
+			header("location:".site_url('loginv/loginv'));
 		}
 		
 	}
